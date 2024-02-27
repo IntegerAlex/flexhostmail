@@ -4,6 +4,8 @@ import Fastify, { FastifyInstance } from "fastify";
 import { sendOTP  , verifyOTP} from "./service";
 import Redis from 'ioredis';
 
+
+
 dotenv.config();
 export const redis = new Redis({
     port: 6379,          
@@ -100,4 +102,11 @@ export function sendOtp(email: string, userName: string) {
         method: 'POST',
     });
     return response;
+}
+
+export function configFHM(mailgunApiKey: string, mailgunDomain: string, redisHost: string, redisPassword: string) {
+    process.env.MAILGUN_API_KEY = mailgunApiKey;
+    process.env.MAILGUN_DOMAIN = mailgunDomain;
+    process.env.REDIS_HOST = redisHost;
+    process.env.REDIS_PASSWORD = redisPassword;
 }
