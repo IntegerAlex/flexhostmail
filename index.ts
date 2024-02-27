@@ -1,12 +1,14 @@
 // Description: This is the main file for the application. It contains the server setup and the routes.
+import dotenv from 'dotenv';
 import Fastify, { FastifyInstance } from "fastify";
 import { sendOTP  , verifyOTP} from "./service";
 import Redis from 'ioredis';
 
+dotenv.config();
 export const redis = new Redis({
     port: 6379,          
-    host: process.env.REDIS_HOST || '35.237.121.154',  
-    password:process.env.REDIS_PASSWORD || 'redis@123',
+    host: process.env.REDIS_HOST ,  
+    password:process.env.REDIS_PASSWORD ,
 });
 
 redis.on('connect', () => {

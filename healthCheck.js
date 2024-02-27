@@ -8,21 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const axios_1 = __importDefault(require("axios"));
+// Purpose: This file is used to check the health of the FHM server by sending a request to the health endpoint.
+const index_1 = require("./index");
 const HEALTH_CHECK_URL = "http://localhost:9543/health";
+(0, index_1.startFHM)();
 function checkHealth() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield axios_1.default.get(HEALTH_CHECK_URL);
-            if (response.status === 200 && response.data === 'OK') {
+            console.log("Attempting health check...");
+            const response = yield fetch(HEALTH_CHECK_URL, { method: 'GET' });
+            if (response.status === 200 && response.statusText === 'OK') {
                 console.log("Health check successful!");
+                process.exit(0);
             }
             else {
-                console.error("Health check failed!");
+                console.error("Health check failed! Unexpected response:", response.status, response.statusText);
                 process.exit(1);
             }
         }
@@ -32,4 +33,7 @@ function checkHealth() {
         }
     });
 }
-checkHealth();
+// The following line should be removed to avoid an undefined 'exit' error.
+// exit(0);
+setTimeout(checkHealth, 10000);
+//   checkHealth();

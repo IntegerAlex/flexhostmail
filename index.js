@@ -14,13 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendOtp = exports.verifyOtp = exports.startFHM = exports.fastify = exports.redis = void 0;
 // Description: This is the main file for the application. It contains the server setup and the routes.
+const dotenv_1 = __importDefault(require("dotenv"));
 const fastify_1 = __importDefault(require("fastify"));
 const service_1 = require("./service");
 const ioredis_1 = __importDefault(require("ioredis"));
+dotenv_1.default.config();
 exports.redis = new ioredis_1.default({
     port: 6379,
-    host: process.env.REDIS_HOST || '35.237.121.154',
-    password: process.env.REDIS_PASSWORD || 'redis@123',
+    host: process.env.REDIS_HOST,
+    password: process.env.REDIS_PASSWORD,
 });
 exports.redis.on('connect', () => {
     console.log('Connected to Redis');
