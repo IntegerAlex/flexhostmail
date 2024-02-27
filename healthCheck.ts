@@ -12,6 +12,7 @@ async function checkHealth() {
 
     if (response.status === 200 && response.data === 'OK') {
       console.log("Health check successful!");
+      process.exit(1);
     } else {
       console.error("Health check failed! Unexpected response:", response.data);
       process.exit(1);
