@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fastify = exports.redis = void 0;
+exports.sendOtp = exports.verifyOtp = exports.startFHM = exports.fastify = exports.redis = void 0;
 // Description: This is the main file for the application. It contains the server setup and the routes.
 const fastify_1 = __importDefault(require("fastify"));
 const service_1 = require("./service");
@@ -33,16 +33,22 @@ exports.fastify.get("/", (request, reply) => __awaiter(void 0, void 0, void 0, f
     return { hello: "world" };
     //   reply.send({ hello: "world" });   
 }));
+const allowedIPs = ['127.0.0.1', '::1']; // Add your Backend IP here
 exports.fastify.addHook('preHandler', (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
-    const ipAddress = request.ip;
-    console.log(`Client IP Address: ${ipAddress}`);
+    const clientIP = request.ip;
+    // Check if the client's IP is in the allowed list
+    if (!allowedIPs.includes(clientIP)) {
+        reply.code(403).send({ error: 'Forbidden: Access from your IP is not allowed.' });
+        return;
+    }
+    // Log the request
 }));
-exports.fastify.get("/sendOTP", (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+exports.fastify.post("/sendOTP", (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, userName } = request.query;
     const res = yield (0, service_1.sendOTP)(email, userName);
     reply.send({ result: res });
 }));
-exports.fastify.get('/verifyOTP', (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+exports.fastify.post('/verifyOTP', (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, otp, userName } = request.query;
         const result = yield (0, service_1.verifyOTP)(email, otp, userName);
@@ -57,11 +63,39 @@ exports.fastify.get('/verifyOTP', (request, reply) => __awaiter(void 0, void 0, 
         reply.status(500).send({ result: 'Internal Server Error' });
     }
 }));
-// Run the server!
-exports.fastify.listen({ port: 8080 }, (err, address) => {
-    if (err) {
-        exports.fastify.log.error(err);
-        process.exit(1);
+// heatlh check
+exports.fastify.get('/health', (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Check Redis Connection
+        yield exports.redis.ping();
+        reply.status(200).send('OK');
     }
-    exports.fastify.log.info(`server listening on ${address}`);
-});
+    catch (error) {
+        reply.status(500).send('Health Check Failed');
+    }
+}));
+// Run the server!
+function startFHM() {
+    exports.fastify.listen({ port: 9543 }, (err, address) => {
+        if (err) {
+            exports.fastify.log.error(err);
+            process.exit(1);
+        }
+        exports.fastify.log.info(`server listening on ${address}`);
+    });
+}
+exports.startFHM = startFHM;
+function verifyOtp(email, userName, otp) {
+    const response = fetch(`http://127.0.0.1:9543/verifyOTP?email=${email}&userName=${userName}&otp=${otp}`, {
+        method: 'POST',
+    });
+    return response;
+}
+exports.verifyOtp = verifyOtp;
+function sendOtp(email, userName) {
+    const response = fetch(`http://123.0.0.1:9543/sendOTP?email=${email}&userName=${userName}`, {
+        method: 'POST',
+    });
+    return response;
+}
+exports.sendOtp = sendOtp;

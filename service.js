@@ -65,9 +65,9 @@ function sendEmail(email, otp, userName) {
         mg.messages.create('sandbox0aa4e67489ef40d7aa183a1b66b55c8c.mailgun.org', {
             from: "no-reply@sandbox0aa4e67489ef40d7aa183a1b66b55c8c.mailgun.org",
             to: [email],
-            subject: "Hello",
-            text: "Testing some Mailgun awesomeness!",
-            html: `<h1>Testing some Mailgun awesomeness! ${otp}</h1>`
+            subject: "OTP for Email Verification",
+            text: `Hi ${userName}, Your OTP is ${otp}`,
+            html: `<h1>Hi ${userName},</h1><p>Your OTP is ${otp}</p>`,
         })
             .then(msg => console.log(msg)) // logs response data
             .catch(err => console.log(err)); // logs any error
