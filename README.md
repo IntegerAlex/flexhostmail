@@ -4,7 +4,8 @@
 
 ## Project Purpose
 
-This Node.js project provides a system for secure email OTP (One-Time Password) generation, sending, and verification. It is designed for demonstration and learning purposes. However, it's essential to note that a robust security review is necessary before considering it for production use.
+This Node.js project provides a system for secure email OTP (One-Time Password) generation, sending, and verification. It is designed for demonstration and learning purposes.
+It uses Fastify over Express :  To focus on speed and efficiency, Fastify is optimized to handle a high volume of requests, making it an ideal choice for performance-critical applications where response time is a key factor.
 
 ## Features
 
@@ -31,6 +32,16 @@ This Node.js project provides a system for secure email OTP (One-Time Password) 
    MAILGUN_API_KEY=your_mailgun_api_key
    REDISHOST=your_redis_hostname_or_ip
    REDISPASSWORD=your_redis_password
+
+### Start  
+
+```bash
+    `node index.js`
+```
+
+```zsh
+    `it listen to port localhost:9543` expose port according to your requirement
+```
 
 ### License
 
