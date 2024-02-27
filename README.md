@@ -46,4 +46,4 @@ It uses Fastify over Express :  To focus on speed and efficiency, Fastify is opt
 
 ### License
 
-This project is licensed under the GNU General Public License v3.0 ([or another GPL version if you prefer]). Note that using the GPL license has implications for how others can use and distribute your code.  
+This project is licensed under the GNU General Public License v3.0 . Note that using the GPL license has implications for how others can use and distribute your code.  
