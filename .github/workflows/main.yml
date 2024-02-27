@@ -1,12 +1,16 @@
 name: Node.js CI (TypeScript Compilation)
 
-on: [push] 
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
+      - env:
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -14,7 +18,7 @@ jobs:
           node-version: '20'
 
       - run: npm install
-      - run: tsc 
+      - run: tsc
       - run: node index.js &
       - run: node healthCheck.js
 
