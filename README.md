@@ -1,5 +1,7 @@
 # Email OTP Verification System
 
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
 ## Project Purpose
 
 This Node.js project provides a system for secure email OTP (One-Time Password) generation, sending, and verification. It is designed for demonstration and learning purposes. However, it's essential to note that a robust security review is necessary before considering it for production use.

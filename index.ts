@@ -59,6 +59,17 @@ fastify.get('/verifyOTP', async (request, reply) => {
 });
 
 
+// heatlh check
+fastify.get('/health', async (request, reply) => {
+    try {
+        // Check Redis Connection
+        await redis.ping(); 
+        
+        reply.status(200).send('OK');
+    } catch (error) {
+        reply.status(500).send('Health Check Failed');
+    }
+});
 
 // Run the server!
 
