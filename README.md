@@ -1,7 +1,9 @@
 # Email OTP Verification System
 
-![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+[![CodeScene Code Health](https://codescene.io/projects/50433/status-badges/code-health)](https://codescene.io/projects/50433)
 ![workflow](https://github.com/IntegerAlex/flexhostmail/actions/workflows/main.yml/badge.svg)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8456/badge)](https://www.bestpractices.dev/projects/8456)
+
 
 ## Project Purpose
 
@@ -46,4 +48,4 @@ It uses Fastify over Express :  To focus on speed and efficiency, Fastify is opt
 
 ### License
 
-This project is licensed under the GNU General Public License v3.0 . Note that using the GPL license has implications for how others can use and distribute your code.  
+
