@@ -1,6 +1,7 @@
 // Purpose: This file is used to check the health of the FHM server by sending a request to the health endpoint.
 import { startFHM } from './index';
 
+
 const HEALTH_CHECK_URL = "http://localhost:9543/health";
 
 startFHM();
@@ -25,8 +26,8 @@ async function checkHealth() {
   
   // The following line should be removed to avoid an undefined 'exit' error.
   // exit(0);
-  
-  checkHealth();
+  setTimeout(checkHealth, 10000);
+//   checkHealth();
   
 
 
