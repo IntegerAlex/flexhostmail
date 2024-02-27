@@ -1,6 +1,7 @@
 # Email OTP Verification System
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+![workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 ## Project Purpose
 
