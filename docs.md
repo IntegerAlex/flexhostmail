@@ -71,3 +71,6 @@ username (string): The username associated with the email address.
 otp (number): The one-time password provided by the user for verification.
 
 **This function assumes that the FMH system is properly configured using configFHM before usage.**.
+
+**See example**
+[Check Example](./example.md)
