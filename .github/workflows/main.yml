@@ -5,11 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+        REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
     steps:
-      - env:
-          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
 
       - uses: actions/checkout@v3
       - name: Use Node.js
