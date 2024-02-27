@@ -49,7 +49,7 @@ export async function verifyOTP(email: string, otp: number, userName: string) {
 export async function sendEmail(email: string, otp: number, userName: string): Promise<boolean>{
     // Send an email
     mg.messages.create('sandbox0aa4e67489ef40d7aa183a1b66b55c8c.mailgun.org', {
-	from: process.env.MAILGUN_DOMAIN || 'sandbox0aa4e67489ef40d7aa183a1b66b55c8c.mailgun.org',
+	from: process.env.MAILGUN_DOMAIN || 'noreply@sandbox0aa4e67489ef40d7aa183a1b66b55c8c.mailgun.org',
 	to: [email],
 	subject: "OTP for Email Verification",
 	text: `Hi ${userName}, Your OTP is ${otp}`,
