@@ -37,13 +37,13 @@ fastify.addHook('preHandler', async (request, reply) => {
     // Log the request
 });
 
-fastify.get("/sendOTP", async (request, reply) => {
+fastify.post("/sendOTP", async (request, reply) => {
     const { email, userName}:any = request.query;
     const res = await sendOTP(email, userName);
     reply.send({result: res});
 })
 
-fastify.get('/verifyOTP', async (request, reply) => {
+fastify.post('/verifyOTP', async (request, reply) => {
     try {
         const { email, otp, userName }: any = request.query;
         const result = await verifyOTP(email, otp, userName);
@@ -72,13 +72,30 @@ fastify.get('/health', async (request, reply) => {
 });
 
 // Run the server!
+export function startFHM() {
+    fastify.listen({port:9543},(err, address) => {
+        if (err) {
+            fastify.log.error(err);
+            process.exit(1);
+        }
+        fastify.log.info(`server listening on ${address}`);
+        }
+    )
+}
 
-fastify.listen({port:9543},(err, address) => {
-    if (err) {
-        fastify.log.error(err);
-        process.exit(1);
-    }
-    fastify.log.info(`server listening on ${address}`);
-    }
-)
+export function verifyOtp(email: string, userName: string , otp: number) {
 
+    const response = fetch(`http://127.0.0.1:9543/verifyOTP?email=${email}&userName=${userName}&otp=${otp}`,
+    {
+        method: 'POST',
+    });
+    return response;
+}   
+
+export function sendOtp(email: string, userName: string) {
+    const response = fetch(`http://123.0.0.1:9543/sendOTP?email=${email}&userName=${userName}`,
+    {
+        method: 'POST',
+    });
+    return response;
+}

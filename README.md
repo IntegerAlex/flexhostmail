@@ -46,6 +46,8 @@ It uses Fastify over Express :  To focus on speed and efficiency, Fastify is opt
     `it listen to port localhost:9543` expose port according to your requirement
 ```
 
+[documentations](./docs.md)
+
 ### License
 
 
