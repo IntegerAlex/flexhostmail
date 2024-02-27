@@ -34,4 +34,4 @@ This Node.js project provides a system for secure email OTP (One-Time Password) 
 
 ### License
 
-This project is licensed under the GNU General Public License v3.0 ([or another GPL version if you prefer]). Note that using the GPL license has implications for how others can use and distribute your code. 
+This project is licensed under the GNU General Public License v3.0 ([or another GPL version if you prefer]). Note that using the GPL license has implications for how others can use and distribute your code.  
