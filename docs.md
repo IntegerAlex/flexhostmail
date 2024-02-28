@@ -1,5 +1,11 @@
 # FlexHost Mail (FMH) Documentation
 
+Using flexhostmail via NPM
+
+```javascript
+npm install flexhostmail
+```
+
  configFHM Function
  The configFHM function is responsible for configuring the essential parameters required for the FlexHost Mail (FMH) system.
 
