@@ -4,7 +4,6 @@
 ![workflow](https://github.com/IntegerAlex/flexhostmail/actions/workflows/main.yml/badge.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8456/badge)](https://www.bestpractices.dev/projects/8456)
 
-
 ## Project Purpose
 
 This Node.js project provides a system for secure email OTP (One-Time Password) generation, sending, and verification. It is designed for demonstration and learning purposes.
@@ -35,6 +34,7 @@ It uses Fastify over Express :  To focus on speed and efficiency, Fastify is opt
    MAILGUN_API_KEY=your_mailgun_api_key
    REDISHOST=your_redis_hostname_or_ip
    REDISPASSWORD=your_redis_password
+   MAILGUN_DOMAIN=your_mailgun_domain
 
 ### Start  
 
@@ -49,5 +49,3 @@ It uses Fastify over Express :  To focus on speed and efficiency, Fastify is opt
 [documentations](./docs.md)
 
 ### License
-
-
