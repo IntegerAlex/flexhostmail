@@ -3,6 +3,7 @@
 [![CodeScene Code Health](https://codescene.io/projects/50433/status-badges/code-health)](https://codescene.io/projects/50433)
 ![workflow](https://github.com/IntegerAlex/flexhostmail/actions/workflows/main.yml/badge.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8456/badge)](https://www.bestpractices.dev/projects/8456)
+![NPM Version](https://img.shields.io/npm/v/flexhostmail)
 
 ## Project Purpose
 
