@@ -1,6 +1,6 @@
 {
   "name": "flexhostmail",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "flexhostmail  provides a system for secure email OTP (One-Time Password) generation, sending, and verification.",
   "main": "index.js",
   "scripts": {
